@@ -1,29 +1,25 @@
 const express = require("express");
-const fs = require("fs");
 const router = express.Router();
-const mysql = require("mysql");
 const passport = require("passport");
 const KakaoStrategy = require("passport-kakao").Strategy;
 
-// const conn = {
-//   host: "localhost",
-//   user: "root",
-//   password: "$unnyjin1041",
-//   database: "bino",
-// };
+passport.serializeUser((user, done) => {
+  done(null, user);
+});
 
-// const connection = mysql.createConnection(conn);
-// connection.connect();
+passport.deserializeUser((obj, done) => {
+  done(null, obj);
+});
 
 passport.use(
-  "kakao-login",
   new KakaoStrategy(
     {
-      clientID: "359a37c3d9b0bec98aab1f2882447b24",
+      clientID: "22a6970c100b4fa1232d4ee15a58ed5c",
       callbackURL: "/auth/login/kakao/callback",
+      clientSecret: "",
     },
-    (accessToken, refreshToken, profile, done) => {
-      console.log(accessToken);
+    async (accessToken, refreshToken, profile, done) => {
+      await console.log(accessToken);
       console.log(profile);
       return done(null);
     }
@@ -37,13 +33,15 @@ router.get("/", (req, res, next) => {
   });
 });
 
-router.get("/auth/login/kakao", passport.authenticate("kakao-login"));
+router.get("/auth/login/kakao", passport.authenticate("kakao"));
+
 router.get(
   "/auth/login/kakao/callback",
-  passport.authenticate("kakao-login", { failureRedirect: "/실패" }),
-  (req, res) => {
-    res.redirect("/성공");
-  }
+  passport.authenticate("kakao", {
+    successRedirect: "/success",
+    session: false,
+    failureRedirect: "/failure",
+  })
 );
 
 module.exports = router;
