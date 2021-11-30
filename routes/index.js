@@ -1,47 +1,60 @@
 const express = require("express");
 const router = express.Router();
 const passport = require("passport");
+const axios = require("axios");
 const KakaoStrategy = require("passport-kakao").Strategy;
+const fs = require("fs");
+const session = require("express-session");
+let username;
 
-passport.serializeUser((user, done) => {
+passport.serializeUser(function (user, done) {
+  console.log("serialized");
+  done(null, user);
+});
+passport.deserializeUser(function (user, done) {
+  console.log("deserialized");
   done(null, user);
 });
 
-passport.deserializeUser((obj, done) => {
-  done(null, obj);
-});
+router.use(session({ secret: "anything" }));
+router.use(passport.initialize());
+router.use(passport.session());
 
 passport.use(
+  "kakao-login",
   new KakaoStrategy(
     {
-      clientID: "22a6970c100b4fa1232d4ee15a58ed5c",
-      callbackURL: "/auth/login/kakao/callback",
-      clientSecret: "",
+      clientID: "359a37c3d9b0bec98aab1f2882447b24",
+      callbackURL: "/auth/kakao/callback",
+      clientSecret: "XvRp0bV6dZ8aj9f7ApYCT0ZoeDEL9cGi",
     },
     async (accessToken, refreshToken, profile, done) => {
-      await console.log(accessToken);
+      console.log(accessToken);
       console.log(profile);
-      return done(null);
+      username = profile._json.properties.nickname;
+      return done(null, {
+        //req.user가 되는 부분
+        user_id: profile._json.id,
+        nickname: profile._json.properties.nickname,
+      });
     }
   )
 );
-
-router.get("/", (req, res, next) => {
-  console.log("index 불러오기 성공");
+router.get("/", (req, res) => {
   res.render("index", {
-    title: "하이하이",
+    title: "안녕하세요",
   });
 });
 
-router.get("/auth/login/kakao", passport.authenticate("kakao"));
+router.get("/auth/kakao", passport.authenticate("kakao-login"));
 
 router.get(
-  "/auth/login/kakao/callback",
-  passport.authenticate("kakao", {
-    successRedirect: "/success",
-    session: false,
+  "/auth/kakao/callback",
+  passport.authenticate("kakao-login", {
     failureRedirect: "/failure",
-  })
+  }),
+  (req, res) => {
+    res.redirect("/user");
+  }
 );
-
 module.exports = router;
