@@ -1,9 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
   <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title><%= title %></title>
   </head>
   <body>
@@ -11,6 +9,13 @@
     <br />
     <div>당신의 아이디는 <%= userId %>입니다.</div>
     <hr />
-    <a>Welcome!</a>
+    <form action="/user" method="post" id="userForm">
+      <a>키를 입력해주세요</a> <br />
+      <input type="text" name="height" />
+      <br />
+      <a>몸무게를 입력해주세요</a> <br />
+      <input type="text" name="weight" />
+      <button type="submit">확인</button>
+    </form>
   </body>
 </html>

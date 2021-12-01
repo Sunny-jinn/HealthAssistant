@@ -3,16 +3,40 @@ const router = express.Router();
 const passport = require("passport");
 const axios = require("axios");
 const KakaoStrategy = require("passport-kakao").Strategy;
-const fs = require("fs");
 const session = require("express-session");
-let username;
+const mysql = require("mysql");
+
+const conn = {
+  host: "localhost",
+  port: "3306",
+  user: "root",
+  password: "$unnyjin1041",
+  database: "practice",
+};
+
+const connection = mysql.createConnection(conn); // DB 커넥션 생성
+connection.connect(); // DB접속
+
+let testQuery = "SELECT * FROM userInfo";
+
+connection.query(testQuery, (err, results, fields) => {
+  //results에 배열로 db값이 저장됨.
+  let arr1 = new Array();
+  for (let i = 0; i < results.length; i++) {
+    arr1.push(results[i].username);
+  }
+  if (err) {
+    console.log(err);
+  }
+  // console.log(arr1);
+});
 
 passport.serializeUser(function (user, done) {
-  console.log("serialized");
+  // console.log("serialized");
   done(null, user);
 });
 passport.deserializeUser(function (user, done) {
-  console.log("deserialized");
+  // console.log("deserialized");
   done(null, user);
 });
 
@@ -31,7 +55,6 @@ passport.use(
     async (accessToken, refreshToken, profile, done) => {
       console.log(accessToken);
       console.log(profile);
-      username = profile._json.properties.nickname;
       return done(null, {
         //req.user가 되는 부분
         user_id: profile._json.id,

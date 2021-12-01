@@ -5,8 +5,8 @@ const passport = require("passport");
 const index = require("./routes/index");
 const user = require("./routes/user");
 const path = require("path");
-const bodyParser = require("body-parser");
-var session = require("express-session");
+const setup = require("./routes/setup");
+const daySelect = require("./routes/daySelect");
 
 passport.serializeUser(function (user, done) {
   console.log("serialized");
@@ -22,18 +22,11 @@ app.use(express.json());
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 
-// app.use(
-//   session({
-//     secret: "secrettexthere",
-//     saveUninitialized: true,
-//     resave: true,
-//   })
-// );
-
 app.use(passport.initialize());
-// app.use(passport.session());
 app.use("/", index);
 app.use("/user", user);
+app.use("/setup", setup);
+app.use("/daySelect", daySelect);
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);

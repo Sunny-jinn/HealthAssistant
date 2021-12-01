@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title><%= day %>요일 운동 시작!</title>
+    <style>
+        table, td, th {
+            border: 1px solid black;
+            border-collapse: collapse;
+            width: 500px;
+            text-align: center;
+        }
+        th {
+            color: violet;
+        }
+    </style>
+  </head>
+  
+  <body>
+    <div>
+        <h1><%= day %>요일 운동 시작하세요!</h1>
+    </div>
+    <div>
+        <table>
+            <div class ="title">
+                <tr>
+                    <th>이름</th>
+                    <th>운동 방법</th>
+                    <th>자극 부위</th>
+                    <th>세트</th>
+                    <th>횟수</th>
+                    <th>쉬는시간</th>
+                </tr>
+            </div>
+        <% for(let i=0; i <arr1.length ;i++) {
+            %>
+            <tr>
+                <td><%= arr1[i].username %></td>
+                <td><%= arr1[i].way %></td>
+                <td><%= arr1[i].part %></td>
+                <td><%= arr1[i].setNumber %></td>
+                <td><%= arr1[i].number %></td>
+                <td><%= arr1[i].breakTime %></td>
+            </tr>
+            <% } %>
+        </table>
+    </div>
+  </body>
+</html>
