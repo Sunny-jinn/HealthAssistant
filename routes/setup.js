@@ -10,6 +10,10 @@ const conn = {
   database: "practice",
 };
 
+let day, day_eng;
+let myArr, myArr2;
+let cnt = 0;
+
 const connection = mysql.createConnection(conn); // DB 커넥션 생성
 connection.connect(); // DB접속
 
@@ -20,8 +24,8 @@ router.get("/", (req, res, next) => {
 });
 
 router.post("/", (req, res, next) => {
-  let testQuery = `INSERT INTO userHealth (username, day, way, part, setNumber, number, breakTime) VALUES ("${req.user.nickname}", "${req.body.day}","${req.body.way}","${req.body.part}","${req.body.setNumber}","${req.body.number}","${req.body.breakTime}")`;
-
+  let testQuery = `INSERT INTO userHealth (username, day, way, part, setNumber, number, breakTime, Id) VALUES ("${req.user.nickname}", "${req.body.day}","${req.body.way}","${req.body.part}","${req.body.setNumber}","${req.body.number}","${req.body.breakTime}","${cnt}")`;
+  cnt++;
   connection.query(testQuery, (err, results, fields) => {
     //results에 배열로 db값이 저장됨.
     if (err) {
@@ -35,8 +39,10 @@ router.get("/Monday", (req, res, next) => {
   let testQuery = "SELECT * FROM userHealth";
   connection.query(testQuery, (err, results, fields) => {
     if (!err) {
-      let myArr = new Array();
-      let myArr2 = new Array();
+      day = "월";
+      day_eng = "Monday";
+      myArr = new Array();
+      myArr2 = new Array();
       for (let i = 0; i < results.length; i++) {
         if (results[i].day == "월") {
           myArr2.push(results[i]);
@@ -65,8 +71,10 @@ router.get("/Tuesday", (req, res, next) => {
   let testQuery = "SELECT * FROM userHealth";
   connection.query(testQuery, (err, results, fields) => {
     if (!err) {
-      let myArr = new Array();
-      let myArr2 = new Array();
+      day = "화";
+      day_eng = "Tuesday";
+      myArr = new Array();
+      myArr2 = new Array();
       for (let i = 0; i < results.length; i++) {
         if (results[i].day == "화") {
           myArr2.push(results[i]);
@@ -95,8 +103,10 @@ router.get("/Wednesday", (req, res, next) => {
   let testQuery = "SELECT * FROM userHealth";
   connection.query(testQuery, (err, results, fields) => {
     if (!err) {
-      let myArr = new Array();
-      let myArr2 = new Array();
+      day = "수";
+      day_eng = "Wednesday";
+      myArr = new Array();
+      myArr2 = new Array();
       for (let i = 0; i < results.length; i++) {
         if (results[i].day == "수") {
           myArr2.push(results[i]);
@@ -125,8 +135,10 @@ router.get("/Thursday", (req, res, next) => {
   let testQuery = "SELECT * FROM userHealth";
   connection.query(testQuery, (err, results, fields) => {
     if (!err) {
-      let myArr = new Array();
-      let myArr2 = new Array();
+      day = "목";
+      day_eng = "Thursday";
+      myArr = new Array();
+      myArr2 = new Array();
       for (let i = 0; i < results.length; i++) {
         if (results[i].day == "목") {
           myArr2.push(results[i]);
@@ -155,8 +167,10 @@ router.get("/Friday", (req, res, next) => {
   let testQuery = "SELECT * FROM userHealth";
   connection.query(testQuery, (err, results, fields) => {
     if (!err) {
-      let myArr = new Array();
-      let myArr2 = new Array();
+      day = "금";
+      day_eng = "Friday";
+      myArr = new Array();
+      myArr2 = new Array();
       for (let i = 0; i < results.length; i++) {
         if (results[i].day == "금") {
           myArr2.push(results[i]);
@@ -185,8 +199,10 @@ router.get("/Saturday", (req, res, next) => {
   let testQuery = "SELECT * FROM userHealth";
   connection.query(testQuery, (err, results, fields) => {
     if (!err) {
-      let myArr = new Array();
-      let myArr2 = new Array();
+      day = "토";
+      day_eng = "Saturday";
+      myArr = new Array();
+      myArr2 = new Array();
       for (let i = 0; i < results.length; i++) {
         if (results[i].day == "토") {
           myArr2.push(results[i]);
@@ -215,8 +231,10 @@ router.get("/Sunday", (req, res, next) => {
   let testQuery = "SELECT * FROM userHealth";
   connection.query(testQuery, (err, results, fields) => {
     if (!err) {
-      let myArr = new Array();
-      let myArr2 = new Array();
+      day = "일";
+      day_eng = "Sunday";
+      myArr = new Array();
+      myArr2 = new Array();
       for (let i = 0; i < results.length; i++) {
         if (results[i].day == "일") {
           myArr2.push(results[i]);
@@ -235,6 +253,54 @@ router.get("/Sunday", (req, res, next) => {
         console.log("일요일 루틴이 없습니다.");
         res.render("setup");
       }
+    } else {
+      console.log(err);
+    }
+  });
+});
+
+router.get("/remove/:Id", (req, res, next) => {
+  let testQuery = "SELECT * FROM userHealth";
+  const Id = req.params.Id;
+  connection.query(testQuery, (err, results, fields) => {
+    if (!err) {
+      myArr = new Array();
+      for (let i = 0; i < results.length; i++) {
+        if (results[i].day == day) {
+          myArr.push(results[i]);
+        }
+      }
+      testQuery = `DELETE FROM userHealth WHERE id = ${Id}`;
+      connection.query(testQuery, (err, results, fields) => {
+        if (!err) {
+          res.send(
+            `<script>alert("삭제 완료!"); location.href='/setup/${day_eng}';</script>`
+          );
+        } else {
+          console.log(err);
+        }
+      });
+    } else {
+      console.log(err);
+    }
+  });
+});
+
+router.get("/edit/:Id", (req, res, next) => {
+  res.render("editHealth", {
+    day: day,
+    arr1: myArr2,
+    Id: req.params.Id,
+  });
+});
+
+router.post("/edit/:Id", (req, res, next) => {
+  const Id = req.params.Id;
+  let testQuery = `UPDATE userHealth SET way="${req.body.way}", part="${req.body.part}", setNumber="${req.body.setNumber}", number="${req.body.number}", breakTime="${req.body.breakTime}" WHERE Id = ${Id}`;
+  connection.query(testQuery, (err, results, field) => {
+    if (!err) {
+      console.log("수정완료!");
+      res.redirect(`/setup/${day_eng}`);
     } else {
       console.log(err);
     }

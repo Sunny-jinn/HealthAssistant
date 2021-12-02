@@ -35,7 +35,7 @@ router.post("/", (req, res) => {
     if (err) {
       console.log(err);
     }
-    if (results.length === 0) {
+    if (results.length == 0) {
       console.log("비었습니다");
     } else {
       console.log(results);

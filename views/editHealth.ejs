@@ -35,6 +35,19 @@
             </div>
         <% for(let i=0; i <arr1.length ;i++) {
             %>
+            <% if(arr1[i].Id == Id) { %>
+                <tr>
+                    <form method="POST" action="" id="editForm">
+                        <td><input type="text" name="way" style="width:70px"/></td>
+                        <td><input type="text" name="part" style="width:70px"/></td>
+                        <td><input type="text" name="setNumber" style="width:70px"/></td>
+                        <td><input type="text" name="number" style="width:70px"/></td>
+                        <td><input type="text" name="breakTime" style="width:70px"/></td>
+                        <td><button type="submit">확인</button></td>
+                    </form>
+                </tr>
+            <% } else {%>
+            
             <tr>
                 <td><%= arr1[i].way %></td>
                 <td><%= arr1[i].part %></td>
@@ -42,13 +55,10 @@
                 <td><%= arr1[i].number %></td>
                 <td><%= arr1[i].breakTime %></td>
                 <td>
-                    <button onclick="location.href='edit/<%= arr1[i].Id %>'">수정</button>
-                </td>
-                <td>
-                    <button onclick="location.href='remove/<%= arr1[i].Id %>'">삭제</button>
+                    
                 </td>
             </tr>
-            <% } %>
+            <% }} %>
         </table>
     </div>
   </body>
