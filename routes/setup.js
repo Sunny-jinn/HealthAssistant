@@ -308,11 +308,4 @@ router.post("/edit/:Id", (req, res, next) => {
   });
 });
 
-router.post("/hi", (req, res, next) => {
-  console.log(req.body.part);
-  console.log(req.body.way);
-  console.log(req.body.day);
-  res.send(test.target);
-});
-
 module.exports = router;

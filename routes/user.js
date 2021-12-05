@@ -17,8 +17,18 @@ router.use(express.urlencoded({ extended: false }));
 
 router.get("/", (req, res, next) => {
   console.log("로그인 성공!");
-  res.render("user", {
-    title: "로그인 성공!",
+
+  let testQuery = `SELECT * FROM user_info WHERE username="${req.user.nickname}"`;
+
+  connection.query(testQuery, (err, results, fields) => {
+    if (results.length == 0) {
+      res.render("user", {
+        title: "정보 입력",
+      });
+    } else {
+      console.log("정보가 있는 유저입니다.");
+      res.redirect("/daySelect");
+    }
   });
 });
 
@@ -34,8 +44,6 @@ router.post("/", (req, res) => {
       console.log(err);
     }
   });
-
-  console.log("키는 " + height + "cm, 몸무게는 " + weight + "kg 입니다.");
   res.redirect("/daySelect");
   // res.redirect("/");
 });

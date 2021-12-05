@@ -7152,6 +7152,14 @@ fieldset:disabled .btn {
   top: 50% !important;
 }
 
+.top-40 {
+  top: 40% !important;
+}
+
+.top-75 {
+  top: 75% !important;
+}
+
 .top-100 {
   top: 100% !important;
 }
@@ -12001,3 +12009,8 @@ footer.footer .social-link:hover {
 .w-40 {
   width: 40%;
 }
+
+.col a {
+  text-decoration: none !important;
+}
+
