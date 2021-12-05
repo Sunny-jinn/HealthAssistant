@@ -19,8 +19,6 @@ router.get("/", (req, res, next) => {
   console.log("로그인 성공!");
   res.render("user", {
     title: "로그인 성공!",
-    nickname: req.user.nickname,
-    userId: req.user.user_id,
   });
 });
 
@@ -35,17 +33,10 @@ router.post("/", (req, res) => {
     if (err) {
       console.log(err);
     }
-    if (results.length == 0) {
-      console.log("비었습니다");
-    } else {
-      console.log(results);
-    }
   });
 
   console.log("키는 " + height + "cm, 몸무게는 " + weight + "kg 입니다.");
-  res.send(
-    `<script>alert("키는 ${height}cm, 몸무게는 ${weight}kg 입니다"); location.href='/daySelect';</script>`
-  );
+  res.redirect("/daySelect");
   // res.redirect("/");
 });
 

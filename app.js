@@ -18,6 +18,7 @@ passport.deserializeUser(function (user, done) {
 });
 
 app.use(express.json());
+app.use(express.static(__dirname + "/public"));
 
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
@@ -27,6 +28,7 @@ app.use("/", index);
 app.use("/user", user);
 app.use("/setup", setup);
 app.use("/daySelect", daySelect);
+app.use("/static", express.static("./js/"));
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);

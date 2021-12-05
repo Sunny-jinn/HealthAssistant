@@ -3,26 +3,39 @@
   <head>
     <meta charset="UTF-8" />
     <title><%= day %>요일 운동 시작!</title>
-    <style>
-        table, td, th {
-            border: 1px solid black;
-            border-collapse: collapse;
-            width: 700px;
-            text-align: center;
-        }
-        th {
-            color: violet;
-        }
-    </style>
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <!-- Font Awesome icons (free version)-->
+    <script
+      src="https://use.fontawesome.com/releases/v5.15.4/js/all.js"
+      crossorigin="anonymous"
+    ></script>
+    <!-- Simple line icons-->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.5.5/css/simple-line-icons.min.css"
+      rel="stylesheet"
+    />
+    <!-- Google fonts-->
+    <link
+      href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="/stylesheets/styles.css" rel="stylesheet" />
   </head>
   
   <body>
-    <div>
-        <h1><%= day %>요일 운동 시작하세요!</h1>
+    <div class="navbar navbar-expand-lg navbar-light bgtop">
+        <div class="container text-center mx-4 my-1">
+          <a class="navbar-brand" href="#page-top">Health Assistant</a>
+        </div>
     </div>
-    <div>
-        <table>
-            <div class ="title">
+    <section class="container">
+        <div>
+            <h1 class="mt-5 text-center"><%= day%>요일 운동 수정</h1>
+          </div>
+    <div class="mt-5">
+        <table class="table text-center">
                 <tr>
                     <th>운동 방법</th>
                     <th>자극 부위</th>
@@ -32,34 +45,39 @@
                     <th></th>
                     <th></th>
                 </tr>
-            </div>
-        <% for(let i=0; i <arr1.length ;i++) {
-            %>
-            <% if(arr1[i].Id == Id) { %>
-                <tr>
-                    <form method="POST" action="" id="editForm">
-                        <td><input type="text" name="way" style="width:70px"/></td>
-                        <td><input type="text" name="part" style="width:70px"/></td>
-                        <td><input type="text" name="setNumber" style="width:70px"/></td>
-                        <td><input type="text" name="number" style="width:70px"/></td>
-                        <td><input type="text" name="breakTime" style="width:70px"/></td>
-                        <td><button type="submit">확인</button></td>
-                    </form>
+                
+                <% for(let i=0; i <arr1.length ;i++) {
+                %>
+                    <% if(arr1[i].Id == Id) { %>
+                        <tr>
+                            <form method="POST" action="" id="editForm">
+                                <td><input class="w-40" type="text" name="way" /></td>
+                                <td><input class="w-40" type="text" name="part" /></td>
+                                <td><input class="w-40" type="text" name="setNumber" /></td>
+                                <td><input class="w-40" type="text" name="number" /></td>
+                                <td><input class="w-40" type="text" name="breakTime" /></td>
+                                <td><button class="btn" type="submit"><i class="far fa-check-circle"></i></button></td>
+                                <td></td>
+                            </form>
+                        </tr>
+                <% } else {%>
+                <div>
+                    <tr>
+                        <td><%= arr1[i].way %></td>
+                        <td><%= arr1[i].part %></td>
+                        <td><%= arr1[i].setNumber %></td>
+                        <td><%= arr1[i].number %></td>
+                        <td><%= arr1[i].breakTime %></td>
+                        <td></td>
+                        <td></td>
                 </tr>
-            <% } else {%>
-            
-            <tr>
-                <td><%= arr1[i].way %></td>
-                <td><%= arr1[i].part %></td>
-                <td><%= arr1[i].setNumber %></td>
-                <td><%= arr1[i].number %></td>
-                <td><%= arr1[i].breakTime %></td>
-                <td>
-                    
-                </td>
-            </tr>
-            <% }} %>
+                </div>
+                <% }} %>
         </table>
     </div>
+</section>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/static/scripts.js"></script>
   </body>
 </html>

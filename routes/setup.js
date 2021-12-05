@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const mysql = require("mysql");
+const test = require("../js/test");
 
 const conn = {
   host: "localhost",
@@ -305,6 +306,13 @@ router.post("/edit/:Id", (req, res, next) => {
       console.log(err);
     }
   });
+});
+
+router.post("/hi", (req, res, next) => {
+  console.log(req.body.part);
+  console.log(req.body.way);
+  console.log(req.body.day);
+  res.send(test.target);
 });
 
 module.exports = router;

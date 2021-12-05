@@ -1,26 +1,125 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html>
   <head>
     <meta charset="UTF-8" />
     <title>Setup</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <!-- Font Awesome icons (free version)-->
+    <script
+      src="https://use.fontawesome.com/releases/v5.15.4/js/all.js"
+      crossorigin="anonymous"
+    ></script>
+    <!-- Simple line icons-->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.5.5/css/simple-line-icons.min.css"
+      rel="stylesheet"
+    />
+    <!-- Google fonts-->
+    <link
+      href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link rel="stylesheet" href="/stylesheets/styles.css" />
+    <script src="/static/test.js"></script>
   </head>
-  <body>
-    <div>
-      <form action="/setup" method="post" id="setupForm">
-        <a>세트 사이 쉬는 시간</a>
-        <input type="text" name="breakTime" /> <br />
-        <a>요일</a>
-        <input type="text" name="day" />
-        <a>운동 방법</a>
-        <input type="text" name="way" />
-        <a>운동할 부위</a>
-        <input type="text" name="part" />
-        <a>세트 수</a>
-        <input type="text" name="setNumber" />
-        <a>갯수</a>
-        <input type="text" name="number" />
-        <button type="submit">제출</button>
-      </form>
+
+  <body id="page-top">
+    <div class="navbar navbar-expand-lg navbar-light bgtop">
+      <div class="container text-center mx-4 my-1">
+        <a class="navbar-brand" href="#page-top">Health Assistant</a>
+      </div>
     </div>
+    <section class="container">
+      <form
+        class="w-50 position-absolute top-50 start-50 translate-middle mt-auto"
+        method="POST"
+        action="/setup"
+      >
+        <div class="mb-3 row">
+          <label for="staticEmail" class="col-sm-2 col-form-label">요일</label>
+          <div class="col-sm-10">
+            <select class="form-select" name="day">
+              <option>선택해주세요</option>
+              <option value="월">월</option>
+              <option value="화">화</option>
+              <option value="수">수</option>
+              <option value="목">목</option>
+              <option value="금">금</option>
+              <option value="토">토</option>
+              <option value="일">일</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="mb-4 row">
+          <label for="staticEmail" class="col-sm-2 col-form-label">
+            운동 부위
+          </label>
+          <div class="col-sm-10">
+            <select
+              class="form-select"
+              name="part"
+              id="part"
+              onchange="addressKindChange(this)"
+            >
+              <option>선택해주세요</option>
+              <option value="어깨">어깨</option>
+              <option value="다리">다리</option>
+              <option value="팔">팔</option>
+              <!-- <option value="d">이두</option> -->
+              <!-- <option value="e">삼두</option>
+          <option value="f">하체</option>
+          <option value="g">코어</option> -->
+            </select>
+          </div>
+        </div>
+        <div class="mb-4 row">
+          <label for="staticEmail" class="col-sm-2 col-form-label">
+            운동 방법
+          </label>
+          <div class="col-sm-10">
+            <select class="form-select" id="way" name="way">
+              <option>선택해주세요</option>
+            </select>
+          </div>
+        </div>
+        <div class="mb-4 row">
+          <label for="staticEmail" class="col-sm-2 col-form-label">
+            세트 수
+          </label>
+          <div class="col-sm-10">
+            <input class="form-control" type="text" name="setNumber" />
+          </div>
+        </div>
+        <div class="mb-4 row">
+          <label for="staticEmail" class="col-sm-2 col-form-label">
+            횟수
+          </label>
+          <div class="col-sm-10">
+            <input class="form-control" type="text" name="number" />
+          </div>
+        </div>
+        <div class="mb-4 row">
+          <label for="staticEmail" class="col-sm-2 col-form-label">
+            쉬는 시간
+          </label>
+          <div class="col-sm-10">
+            <input class="form-control" type="text" name="breakTime" />
+          </div>
+        </div>
+        <div class="position-absolute top-100 start-50">
+          <button type="submit" class="btn">
+            <i class="fas fa-save"></i>
+          </button>
+        </div>
+      </form>
+    </section>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/static/scripts.js"></script>
   </body>
 </html>
