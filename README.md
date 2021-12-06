@@ -58,7 +58,7 @@ npm intall express --save
 
 - [X] DataStructures
 - [x] Add back to top links
-- [o] Exception Handling
+- [x] Exception Handling
 - [x] Use Cookies 
 - [x] Encryption
 
