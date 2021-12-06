@@ -13,8 +13,8 @@ Health Assistant is a Web based program for Daily exercisers.
 
 ## Prerequisites
 ```
-- npm install
-- npm intall express --save
+npm install
+npm intall express --save
 ```
 
 ## Installation
