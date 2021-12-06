@@ -7,6 +7,8 @@ const user = require("./routes/user");
 const path = require("path");
 const setup = require("./routes/setup");
 const daySelect = require("./routes/daySelect");
+const otherUser = require("./routes/otherUser");
+const myHealth = require("./routes/myHealth");
 
 passport.serializeUser(function (user, done) {
   console.log("serialized");
@@ -28,6 +30,8 @@ app.use("/", index);
 app.use("/user", user);
 app.use("/setup", setup);
 app.use("/daySelect", daySelect);
+app.use("/otherUser", otherUser);
+app.use("/myHealth", myHealth);
 app.use("/static", express.static("./js/"));
 
 app.listen(port, () => {

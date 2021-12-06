@@ -12014,3 +12014,11 @@ footer.footer .social-link:hover {
   text-decoration: none !important;
 }
 
+.otherUser {
+  text-decoration: none !important;
+  color: black;
+}
+
+.otherUser:hover {
+  color: grey;
+}

@@ -21,22 +21,56 @@
       type="text/css"
     />
     <!-- Core theme CSS (includes Bootstrap)-->
-    <link href="/stylesheets/styles.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Corinthia:wght@700&family=Jua&family=Anton&family=Fuzzy+Bubbles:wght@700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/stylesheets/styles.css" />
+    <style>
+        .healthLink {
+            text-decoration: none !important;
+            color: black;
+            font-size: 18px;
+        }
+
+      .title-fontA {
+        font-family: 'Fuzzy Bubbles', cursive;
+      }
+      .title-fontB {
+        font-family: 'Anton', sans-serif;
+      }
+      .day-fontB {
+          font-family: 'Jua';
+      }
+      
+      .table-title {
+          color: pink;
+          font-size: 20px;
+      }
+    </style>
   </head>
   
   <body>
     <div class="navbar navbar-expand-lg navbar-light bgtop">
         <div class="container text-center mx-4 my-1">
-          <a class="navbar-brand" href="#page-top">Health Assistant</a>
+          <a class="navbar-brand title-fontA" href="/daySelect">Health Assistant</a>
         </div>
+        <div class="mx-2">
+            <a class="otherUser title-fontB" href="/otherUser">OTHER</a>
+          </div>
+          <div class="mx-4">
+            <a class="otherUser title-fontB" href="/myHealth">MY</a>
+          </div>
     </div>
     <section class="container">
       <div>
-        <h1 class="mt-5 text-center"><%= day%>요일 운동 시작하세요!</h1>
+        <h1 class="mt-5 text-center day-fontB"><%= day%>요일 운동 시작하세요!</h1>
       </div>
         <div class="mt-5">
             <table class="table text-center">
-                <tr>
+                <tr class="table-title">
                     <th>운동 방법</th>
                     <th>자극 부위</th>
                     <th>세트</th>
@@ -49,7 +83,63 @@
                 <% for(let i=0; i <arr1.length ;i++) {
                     %>
                     <tr>
-                        <td><%= arr1[i].way %></td>
+                        <% if(arr1[i].way =="프론트 레이즈") { %>
+                            <td><a class="healthLink" href="https://www.youtube.com/watch?v=j2Nvn8nbtXs"><%= arr1[i].way %></a></td>
+                        <% } else if(arr1[i].way == "아놀드 프레스") { %>
+                            <td><a class="healthLink" href="https://www.youtube.com/watch?v=tsSxQ2__DQU"><%= arr1[i].way %></a></td>
+                            <% } else if(arr1[i].way == "래터럴 레이즈") { %>
+                            <td><a class="healthLink" href="https://www.youtube.com/watch?v=geenhiHju-o"><%= arr1[i].way %></a></td>
+                            <% } else if(arr1[i].way == "리버스 펙덱 플라이") { %>
+                            <td><a class="healthLink" href="https://www.youtube.com/watch?v=Ey8KQroKsCk"><%= arr1[i].way %></a></td>
+                            <% } else if(arr1[i].way == "인클라인 벤치프레스") { %>
+                            <td><a class="healthLink" href="https://www.youtube.com/watch?v=11gY7Q5D5wo"><%= arr1[i].way %></a></td>
+                            <% } else if(arr1[i].way == "벤치프레스") { %>
+                            <td><a class="healthLink" href="https://www.youtube.com/watch?v=5rRHgro9Vrg"><%= arr1[i].way %></a></td>
+                            <% } else if(arr1[i].way == "딥스") { %>
+                            <td><a class="healthLink" href="https://www.youtube.com/watch?v=W6I5Tsuu_CE"><%= arr1[i].way %></a></td>
+                            <% } else if(arr1[i].way == "푸쉬업") { %>
+                            <td><a class="healthLink" href="https://www.youtube.com/watch?v=2qzcGwK282Y"><%= arr1[i].way %></a></td>
+                            <% } else if(arr1[i].way == "랫풀다운") { %>
+                            <td><a class="healthLink" href="https://www.youtube.com/watch?v=hVa5dsH3DaA"><%= arr1[i].way %></a></td>
+                            <% } else if(arr1[i].way == "시티드로우") { %>
+                            <td><a class="healthLink" href="https://www.youtube.com/watch?v=jzf_IMgQ1Zc"><%= arr1[i].way %></a></td>
+                            <% } else if(arr1[i].way == "데드리프트") { %>
+                            <td><a class="healthLink" href="https://www.youtube.com/watch?v=6RW8nWzbIS8"><%= arr1[i].way %></a></td>
+                            <% } else if(arr1[i].way == "바벨로우") { %>
+                            <td><a class="healthLink" href="https://www.youtube.com/watch?v=g4X2faTd0DE"><%= arr1[i].way %></a></td>
+                            <% } else if(arr1[i].way == "풀업") { %>
+                            <td><a class="healthLink" href="https://www.youtube.com/watch?v=LY54fY1ThOw"><%= arr1[i].way %></a></td>
+                            <% } else if(arr1[i].way == "덤벨 컬") { %>
+                            <td><a class="healthLink" href="https://www.youtube.com/watch?v=sAq_ocpRh_I"><%= arr1[i].way %></a></td>
+                            <% } else if(arr1[i].way == "오버헤드프레스") { %>
+                            <td><a class="healthLink" href="https://www.youtube.com/watch?v=kDbUNTX-Xts"><%= arr1[i].way %></a></td>
+                            <% } else if(arr1[i].way == "덤벨 킥백") { %>
+                            <td><a class="healthLink" href="https://youtu.be/6SS6K3lAwZ8"><%= arr1[i].way %></a></td>
+                            <% } else if(arr1[i].way == "라잉 트라이셉스 익스텐션") { %>
+                            <td><a class="healthLink" href="https://www.youtube.com/watch?v=MVwknaifUfw"><%= arr1[i].way %></a></td>
+                            <% } else if(arr1[i].way == "레그프레스") { %>
+                            <td><a class="healthLink" href="https://www.youtube.com/watch?v=hYwJrXpzEfs"><%= arr1[i].way %></a></td>
+                            <% } else if(arr1[i].way == "스쿼트") { %>
+                            <td><a class="healthLink" href="https://www.youtube.com/watch?v=IOCOKjTI2Qo"><%= arr1[i].way %></a></td>
+                            <% } else if(arr1[i].way == "런지") { %>
+                            <td><a class="healthLink" href="https://www.youtube.com/watch?v=Nx1_TkD41DE"><%= arr1[i].way %></a></td>
+                            <% } else if(arr1[i].way == "레그 익스텐션") { %>
+                            <td><a class="healthLink" href="https://www.youtube.com/watch?v=amJyUQfDXTs"><%= arr1[i].way %></a></td>
+                            <% } else if(arr1[i].way == "레그컬") { %>
+                            <td><a class="healthLink" href="https://www.youtube.com/watch?v=_UZDE-HH2eA"><%= arr1[i].way %></a></td>
+                            <% } else if(arr1[i].way == "플랭크") { %>
+                            <td><a class="healthLink" href="https://www.youtube.com/watch?v=B--6YfhmBGc"><%= arr1[i].way %></a></td>
+                            <% } else if(arr1[i].way == "크런치") { %>
+                            <td><a class="healthLink" href="https://www.youtube.com/watch?v=pq6aj0yiSrw"><%= arr1[i].way %></a></td>
+                            <% } else if(arr1[i].way == "백 익스텐션") { %>
+                            <td><a class="healthLink" href="https://www.youtube.com/watch?v=Bw9YuQTTc58"><%= arr1[i].way %></a></td>
+                            <% } else if(arr1[i].way == "싸이클") { %>
+                            <td><a class="healthLink" href="https://www.youtube.com/watch?v=y1e3KYo_Pas"><%= arr1[i].way %></a></td>
+                            <% } else if(arr1[i].way == "런닝머신") { %>
+                            <td><a class="healthLink" href="https://www.youtube.com/watch?v=djAJE282AyI"><%= arr1[i].way %></a></td>
+                            <% } else {%>
+                                <%= arr1[i].way %>
+                            <% } %>
                         <td><%= arr1[i].part %></td>
                         <td><%= arr1[i].setNumber %></td>
                         <td><%= arr1[i].number %></td>

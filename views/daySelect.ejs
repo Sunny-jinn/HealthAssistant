@@ -24,12 +24,37 @@
       rel="stylesheet"
       type="text/css"
     />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Corinthia:wght@700&family=Gowun+Dodum&family=Do+Hyeon&family=Jua&family=Anton&family=Fuzzy+Bubbles:wght@700&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="/stylesheets/styles.css" />
+    <style>
+      .title-fontA {
+        font-family: 'Fuzzy Bubbles', cursive;
+      }
+      .title-fontB {
+        font-family: 'Anton', sans-serif;
+      }
+      .day-fontA {
+        font-family: 'Gowun Dodum', sans-serif;
+        font-size: 35px;
+        color: black;
+      }
+    </style>
   </head>
   <body>
     <div class="navbar navbar-expand-lg navbar-light bgtop">
       <div class="container text-center mx-4 my-1">
-        <a class="navbar-brand" href="#page-top">Health Assistant</a>
+        <a class="navbar-brand title-fontA" href="/daySelect">Health Assistant</a>
+      </div>
+      <div class="mx-2">
+        <a class="otherUser title-fontB" href="/otherUser">OTHER</a>
+      </div>
+      <div class="mx-4">
+        <a class="otherUser title-fontB" href="/myHealth">MY</a>
       </div>
     </div>
     <div class="container">
@@ -38,15 +63,17 @@
           <a href="/setup/Monday">
           <div class="card" style="width: 75%">
             <div class="card-body">
-              <h5 class="card-title text-center">월요일</h5>
+              <h5 class="card-title text-center day-fontA">월요일</h5>
               <p class="card-text">
-                <ul>
+                
                   <% if(arr_mon.length ==0) { %>
-                    <p>월요일 운동이 없습니다!</p>
+                    <p>월요일 운동이 없습니다! </p>
                     <% } else { %>
+                      <ul>
                     <li><%= arr_mon[0].way %></li>
+                  </ul>
                     <% } %>
-                </ul>
+                
               </p>
             </div>
           </div>
@@ -56,15 +83,15 @@
           <a href="/setup/Tuesday">
           <div class="card" style="width: 75%">
             <div class="card-body">
-              <h5 class="card-title text-center">화요일</h5>
+              <h5 class="card-title text-center day-fontA">화요일</h5>
               <p class="card-text">
-                <ul>
                   <% if(arr_tue.length ==0) { %>
                     <p>화요일 운동이 없습니다!</p>
                     <% } else { %>
+                      <ul>
                     <li><%= arr_tue[0].way %></li>
+                  </ul>
                     <% } %>
-                </ul>
               </p>
             </div>
           </div>
@@ -74,13 +101,14 @@
           <a href="/setup/Wednesday">
           <div class="card" style="width: 75%">
             <div class="card-body">
-              <h5 class="card-title text-center">수요일</h5>
+              <h5 class="card-title text-center day-fontA">수요일</h5>
               <p class="card-text">
-                <ul>
                   <% if(arr_wed.length ==0) { %>
                     <p>수요일 운동이 없습니다!</p>
                     <% } else { %>
+                      <ul>
                     <li><%= arr_wed[0].way %></li>
+                  </ul>
                     <% } %>
                 </ul>
               </p>
@@ -92,15 +120,17 @@
           <a href="/setup/Thursday">
           <div class="card" style="width: 75%">
             <div class="card-body">
-              <h5 class="card-title text-center">목요일</h5>
+              <h5 class="card-title text-center day-fontA">목요일</h5>
               <p class="card-text">
-                <ul>
+                
                   <% if(arr_thu.length ==0) { %>
                     <p>목요일 운동이 없습니다!</p>
                     <% } else { %>
+                      <ul>
                     <li><%= arr_thu[0].way %></li>
+                  </ul>
                     <% } %>
-                </ul>
+                
               </p>
             </div>
           </div>
@@ -110,17 +140,17 @@
           <a href="/setup/Friday">
           <div class="card mt-5" style="width: 75%">
             <div class="card-body">
-              <h5 class="card-title text-center">금요일</h5>
+              <h5 class="card-title text-center day-fontA">금요일</h5>
               <p class="card-text">
-                <ul>
                   
                     <% if(arr_fri.length ==0) { %>
                       <p>금요일 운동이 없습니다!</p>
                       <% } else { %>
+                        <ul>
                       <li><%= arr_fri[0].way %></li>
+                    </ul>
                       <% } %>
                   
-                </ul>
               </p>
             </div>
           </div>
@@ -130,17 +160,16 @@
           <a href="/setup/Saturday">
           <div class="card mt-5" style="width: 75%">
             <div class="card-body">
-              <h5 class="card-title text-center">토요일</h5>
+              <h5 class="card-title text-center day-fontA">토요일</h5>
               <p class="card-text">
-                <ul>
                   
                     <% if(arr_sat.length ==0) { %>
                       <p>토요일 운동이 없습니다!</p>
                       <% } else { %>
+                        <ul>
                       <li><%= arr_sat[0].way %></li>
+                    </ul>
                       <% } %>
-                  
-                </ul>
               </p>
             </div>
           </div>
@@ -150,17 +179,16 @@
           <a href="setup/Sunday">
           <div class="card mt-5" style="width: 75%">
             <div class="card-body">
-              <h5 class="card-title text-center">일요일</h5>
+              <h5 class="card-title text-center day-fontA">일요일</h5>
               <p class="card-text">
-                <ul>
                   
                     <% if(arr_sun.length ==0) { %>
                       <p>일요일 운동이 없습니다!</p>
                       <% } else { %>
+                        <ul>
                       <li><%= arr_sun[0].way %></li>
+                    </ul>
                       <% } %>
-                  
-                </ul>
               </p>
             </div>
           </div>

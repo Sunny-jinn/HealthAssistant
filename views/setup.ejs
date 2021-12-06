@@ -24,14 +24,36 @@
       rel="stylesheet"
       type="text/css"
     />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Corinthia:wght@700&family=Anton&family=Fuzzy+Bubbles:wght@700&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="/stylesheets/styles.css" />
+    <style>
+      .title-fontA {
+        font-family: "Fuzzy Bubbles", cursive;
+      }
+      .title-fontB {
+        font-family: "Anton", sans-serif;
+      }
+    </style>
     <script src="/static/test.js"></script>
   </head>
 
   <body id="page-top">
     <div class="navbar navbar-expand-lg navbar-light bgtop">
       <div class="container text-center mx-4 my-1">
-        <a class="navbar-brand" href="#page-top">Health Assistant</a>
+        <a class="navbar-brand title-fontA" href="/daySelect"
+          >Health Assistant</a
+        >
+      </div>
+      <div class="mx-2">
+        <a class="otherUser title-fontB" href="/otherUser">OTHER</a>
+      </div>
+      <div class="mx-4">
+        <a class="otherUser title-fontB" href="/myHealth">MY</a>
       </div>
     </div>
     <section class="container">
@@ -69,8 +91,12 @@
             >
               <option>선택해주세요</option>
               <option value="어깨">어깨</option>
-              <option value="다리">다리</option>
-              <option value="팔">팔</option>
+              <option value="하체">하체</option>
+              <option value="이삼두">이두 삼두</option>
+              <option value="코어">코어</option>
+              <option value="유산소">유산소</option>
+              <option value="등">등</option>
+              <option value="가슴">가슴</option>
               <!-- <option value="d">이두</option> -->
               <!-- <option value="e">삼두</option>
           <option value="f">하체</option>
@@ -113,7 +139,7 @@
           </div>
         </div>
         <div class="position-absolute top-100 start-50">
-          <button type="submit" class="btn">
+          <button type="submit" class="btn btn-lg">
             <i class="fas fa-save"></i>
           </button>
         </div>
