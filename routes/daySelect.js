@@ -89,4 +89,9 @@ router.get("/", (req, res, next) => {
 //   // res.redirect("/");
 // });
 
+// router.get("/auth/logout/kakao", function (req, res) {
+//   req.logout();
+//   res.redirect("/");
+// });
+
 module.exports = router;

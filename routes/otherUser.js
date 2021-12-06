@@ -18,12 +18,12 @@ const connection = mysql.createConnection(conn); // DB 커넥션 생성
 connection.connect(); // DB접속
 
 router.get("/", (req, res) => {
-  testQuery = `SELECT * FROM user_info WHERE username="임준표"`;
+  testQuery = `SELECT * FROM user_info WHERE username="${req.user.nickname}"`;
   connection.query(testQuery, (err, results, fields) => {
     if (!err) {
       const userHeight = results[0].userHeight;
       const userWeight = results[0].userWeight;
-      testQuery = `SELECT * FROM user_info WHERE userWeight <= (${userWeight} + 5) and userWeight >= (${userWeight} -5 ) and userHeight <= (${userHeight} +3) and userHeight >= (${userHeight} -5) `;
+      testQuery = `SELECT * FROM user_info WHERE userWeight <= (${userWeight} + 5) and userWeight >= (${userWeight} -5 ) and userHeight <= (${userHeight} +3) and userHeight >= (${userHeight} -5) and username != "${req.user.nickname}"`;
       connection.query(testQuery, (err, results, fields) => {
         if (err) {
           console.log(err);

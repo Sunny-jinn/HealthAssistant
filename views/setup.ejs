@@ -27,7 +27,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Corinthia:wght@700&family=Anton&family=Fuzzy+Bubbles:wght@700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Corinthia:wght@700&family=Jua&family=Anton&family=Fuzzy+Bubbles:wght@700&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="/stylesheets/styles.css" />
@@ -37,6 +37,9 @@
       }
       .title-fontB {
         font-family: "Anton", sans-serif;
+      }
+      .day-fontB {
+        font-family: "Jua", sans-serif;
       }
     </style>
     <script src="/static/test.js"></script>
@@ -49,101 +52,112 @@
           >Health Assistant</a
         >
       </div>
-      <div class="mx-2">
+      <div class="mx-3">
         <a class="otherUser title-fontB" href="/otherUser">OTHER</a>
       </div>
-      <div class="mx-4">
+      <div class="mx-3">
         <a class="otherUser title-fontB" href="/myHealth">MY</a>
+      </div>
+      <div class="mx-3">
+        <a class="otherUser title-fontB" href="/auth/logout/kakao">LOGOUT</a>
       </div>
     </div>
     <section class="container">
-      <form
-        class="w-50 position-absolute top-40 start-50 translate-middle mt-auto"
-        method="POST"
-        action="/setup"
-      >
-        <div class="mb-3 row">
-          <label for="staticEmail" class="col-sm-2 col-form-label">요일</label>
-          <div class="col-sm-10">
-            <select class="form-select" name="day">
-              <option>선택해주세요</option>
-              <option value="월">월</option>
-              <option value="화">화</option>
-              <option value="수">수</option>
-              <option value="목">목</option>
-              <option value="금">금</option>
-              <option value="토">토</option>
-              <option value="일">일</option>
-            </select>
-          </div>
-        </div>
-
-        <div class="mb-4 row">
-          <label for="staticEmail" class="col-sm-2 col-form-label">
-            운동 부위
-          </label>
-          <div class="col-sm-10">
-            <select
-              class="form-select"
-              name="part"
-              id="part"
-              onchange="addressKindChange(this)"
+      <div>
+        <h1 class="mt-5 text-center day-fontB">운동 추가!</h1>
+      </div>
+      <div class="mt-5" style="float: none; margin: 100 auto">
+        <form
+          class="w-50"
+          style="float: none; margin: 0 auto"
+          method="POST"
+          action="/setup"
+        >
+          <div class="mb-3 row">
+            <label for="staticEmail" class="col-sm-2 col-form-label"
+              >요일</label
             >
-              <option>선택해주세요</option>
-              <option value="어깨">어깨</option>
-              <option value="하체">하체</option>
-              <option value="이삼두">이두 삼두</option>
-              <option value="코어">코어</option>
-              <option value="유산소">유산소</option>
-              <option value="등">등</option>
-              <option value="가슴">가슴</option>
-              <!-- <option value="d">이두</option> -->
-              <!-- <option value="e">삼두</option>
+            <div class="col-sm-10">
+              <select class="form-select" name="day">
+                <option>선택해주세요</option>
+                <option value="월">월</option>
+                <option value="화">화</option>
+                <option value="수">수</option>
+                <option value="목">목</option>
+                <option value="금">금</option>
+                <option value="토">토</option>
+                <option value="일">일</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="mb-4 row">
+            <label for="staticEmail" class="col-sm-2 col-form-label">
+              운동 부위
+            </label>
+            <div class="col-sm-10">
+              <select
+                class="form-select"
+                name="part"
+                id="part"
+                onchange="addressKindChange(this)"
+              >
+                <option>선택해주세요</option>
+                <option value="어깨">어깨</option>
+                <option value="하체">하체</option>
+                <option value="이삼두">이두 삼두</option>
+                <option value="코어">코어</option>
+                <option value="유산소">유산소</option>
+                <option value="등">등</option>
+                <option value="가슴">가슴</option>
+                <!-- <option value="d">이두</option> -->
+                <!-- <option value="e">삼두</option>
           <option value="f">하체</option>
           <option value="g">코어</option> -->
-            </select>
+              </select>
+            </div>
           </div>
-        </div>
-        <div class="mb-4 row">
-          <label for="staticEmail" class="col-sm-2 col-form-label">
-            운동 방법
-          </label>
-          <div class="col-sm-10">
-            <select class="form-select" id="way" name="way">
-              <option>선택해주세요</option>
-            </select>
+          <div class="mb-4 row">
+            <label for="staticEmail" class="col-sm-2 col-form-label">
+              운동 방법
+            </label>
+            <div class="col-sm-10">
+              <select class="form-select" id="way" name="way">
+                <option>선택해주세요</option>
+              </select>
+            </div>
           </div>
-        </div>
-        <div class="mb-4 row">
-          <label for="staticEmail" class="col-sm-2 col-form-label">
-            세트 수
-          </label>
-          <div class="col-sm-10">
-            <input class="form-control" type="text" name="setNumber" />
+          <div class="mb-4 row">
+            <label for="staticEmail" class="col-sm-2 col-form-label">
+              세트 수
+            </label>
+            <div class="col-sm-10">
+              <input class="form-control" type="text" name="setNumber" />
+            </div>
           </div>
-        </div>
-        <div class="mb-4 row">
-          <label for="staticEmail" class="col-sm-2 col-form-label">
-            횟수
-          </label>
-          <div class="col-sm-10">
-            <input class="form-control" type="text" name="number" />
+          <div class="mb-4 row">
+            <label for="staticEmail" class="col-sm-2 col-form-label">
+              횟수
+            </label>
+            <div class="col-sm-10">
+              <input class="form-control" type="text" name="number" />
+            </div>
           </div>
-        </div>
-        <div class="mb-4 row">
-          <label for="staticEmail" class="col-sm-2 col-form-label">
-            쉬는 시간
-          </label>
-          <div class="col-sm-10">
-            <input class="form-control" type="text" name="breakTime" />
+          <div class="mb-4 row">
+            <label for="staticEmail" class="col-sm-2 col-form-label">
+              쉬는 시간
+            </label>
+            <div class="col-sm-10">
+              <input class="form-control" type="text" name="breakTime" />
+            </div>
           </div>
-        </div>
-        <div class="position-absolute top-100 start-50">
-          <button type="submit" class="btn btn-lg">
-            <i class="fas fa-save"></i>
-          </button>
-        </div>
-      </form>
+          <div class="mt-3 text-center">
+            <button type="submit" class="btn btn-lg">
+              <i class="fas fa-save"></i>
+            </button>
+          </div>
+        </form>
+      </div>
     </section>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="/static/scripts.js"></script>

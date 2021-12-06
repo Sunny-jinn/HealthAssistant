@@ -80,4 +80,10 @@ router.get(
     res.redirect("/user");
   }
 );
+
+router.get("/auth/logout/kakao", function (req, res) {
+  req.logout();
+  res.redirect("/");
+});
+
 module.exports = router;
