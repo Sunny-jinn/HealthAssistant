@@ -56,9 +56,9 @@ npm intall express --save
 
 ## Roadmap
 
-- [ ] DataStructures
+- [X] DataStructures
 - [x] Add back to top links
-- [x] Exception Handling
+- [o] Exception Handling
 - [x] Use Cookies 
 - [x] Encryption
 
