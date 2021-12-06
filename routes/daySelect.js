@@ -18,7 +18,7 @@ const connection = mysql.createConnection(conn); // DB 커넥션 생성
 connection.connect(); // DB접속
 
 router.get("/", (req, res, next) => {
-  testQuery = "SELECT * FROM userHealth";
+  testQuery = `SELECT * FROM userHealth WHERE username="${req.user.nickname}"`;
   connection.query(testQuery, (err, results, fields) => {
     if (!err) {
       let myArr_mon = new Array();

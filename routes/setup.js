@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const mysql = require("mysql");
-const test = require("../js/test");
+const test = require("../js/examples");
 
 const conn = {
   host: "localhost",
@@ -37,7 +37,7 @@ router.post("/", (req, res, next) => {
 });
 
 router.get("/Monday", (req, res, next) => {
-  let testQuery = "SELECT * FROM userHealth";
+  let testQuery = `SELECT * FROM userHealth WHERE username="${req.user.nickname}"`;
   connection.query(testQuery, (err, results, fields) => {
     if (!err) {
       day = "월";
